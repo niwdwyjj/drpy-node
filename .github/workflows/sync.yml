@@ -1,0 +1,14 @@
+name: Sync Fork
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天0点执行一次，可根据需要修改
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: TG908/fork-sync@v1.6.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          owner: hjdhnx
+          head: main # drpy-node项目的主分支名，根据实际情况修改
+          base: main # 你fork后的仓库的主分支名
